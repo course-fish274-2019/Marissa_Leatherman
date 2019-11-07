@@ -18,3 +18,9 @@ library(ggplot2)
 ggplot(data=fish_data_cat_new, mapping=(aes(x = length, y = scalelength, color = lakeid))) +
          geom_point()+
          labs(x = 'Body Length', y = 'Scale Length')
+
+
+
+#try this histogram
+ggplot(fish_data_cat, aes(x = scalelength, fill = length_cat)) +
+  geom_histogram()
