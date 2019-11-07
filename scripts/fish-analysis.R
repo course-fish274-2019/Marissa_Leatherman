@@ -2,8 +2,9 @@
 
 install.packages("dplyr")
 install.packages('tidyverse')
-library(dplyr)
+
 library(ggplot2)
+library(dplyr)
 
 # Data import
 
@@ -14,7 +15,7 @@ fish_data <-read.csv("data_raw/Gaeta_etal_CLC_data_1.csv")
 # smaller is considered small
 
 fish_data_cat <- fish_data %>%
-  mutate(length_cat <- ifelse(length > 300, "big", "small"))
+  mutate(length_cat = ifelse(length > 300, "big", "small"))
 
 fish_data_cat_new <- filter(fish_data_cat, scalelength > 1)
 
@@ -27,4 +28,4 @@ ggplot(data=fish_data_cat_new, mapping=(aes(x = length, y = scalelength, color =
 # Histogram added by Dr. Roberts in pulling exercise
 
 ggplot(fish_data_cat, aes(x = scalelength, fill = length_cat)) +
-  geom_histogram()
+  geom_histogram(bins=80)
