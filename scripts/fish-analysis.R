@@ -19,12 +19,12 @@ fish_data_cat <- fish_data %>%
 fish_data_cat_new <- filter(fish_data_cat, scalelength > 1)
 
 # Create a scatterplot based on length and scale length of fish with color differences for lake IDs
+
 ggplot(data=fish_data_cat_new, mapping=(aes(x = length, y = scalelength, color = lakeid))) +
          geom_point()+
          labs(x = 'Body Length', y = 'Scale Length')
 
+# Histogram added by Dr. Roberts in pulling exercise
 
-
-#try this histogram
 ggplot(fish_data_cat, aes(x = scalelength, fill = length_cat)) +
   geom_histogram()
