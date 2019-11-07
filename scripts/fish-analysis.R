@@ -1,10 +1,15 @@
-fish_data <-read.csv("data_raw/Gaeta_etal_CLC_data_1.csv")
+# Libraries
 
 install.packages("dplyr")
 install.packages('tidyverse')
 library(dplyr)
+library(ggplot2)
 
-# This code adds a categoical size column sorted by big and small,
+# Data import
+
+fish_data <-read.csv("data_raw/Gaeta_etal_CLC_data_1.csv")
+
+# This code names and creates a categoical size column sorted by big and small,
 # where any length bigger than 300 is considered big and anything 
 # smaller is considered small
 
@@ -13,8 +18,7 @@ fish_data_cat <- fish_data %>%
 
 fish_data_cat_new <- filter(fish_data_cat, scalelength > 1)
 
-library(ggplot2)
-
+# Create a scatterplot based on length and scale length of fish with color differences for lake IDs
 ggplot(data=fish_data_cat_new, mapping=(aes(x = length, y = scalelength, color = lakeid))) +
          geom_point()+
          labs(x = 'Body Length', y = 'Scale Length')
