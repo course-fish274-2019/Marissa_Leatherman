@@ -29,3 +29,7 @@ ggplot(data=fish_data_cat_new, mapping=(aes(x = length, y = scalelength, color =
 
 ggplot(fish_data_cat, aes(x = scalelength, fill = length_cat)) +
   geom_histogram(bins=80)
+
+# Save histogram to figures folder as JPEG
+
+ggsave('figures/scale_hist_by_length.jpg')
